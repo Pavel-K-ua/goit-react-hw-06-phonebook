@@ -1,17 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/slice';
 
-export const FilterContacts = ({ takeData, filterValue }) => {
+const FilterContacts = () => {
+  const dispatch = useDispatch();
+
+  const handleInput = e => {
+    dispatch(setFilter(e.target.value));
+  };
+
   return (
     <form>
-      <input onChange={takeData} type="text" />
+      <input onChange={handleInput} type="text" />
     </form>
   );
 };
 
 export default FilterContacts;
-
-FilterContacts.propTypes = {
-  takeData: PropTypes.func,
-  filterValue: PropTypes.string,
-};
